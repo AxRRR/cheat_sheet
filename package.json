@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.0.0",
+    "@fortawesome/free-solid-svg-icons": "^6.0.0",
+    "@fortawesome/react-fontawesome": "^0.1.17",
+    "firebase": "^9.6.7",
+    "mongoose": "^6.2.3",
     "next": "12.1.0",
+    "prismjs": "^1.27.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "sass": "^1.49.8"
   },
   "devDependencies": {
     "eslint": "8.9.0",
