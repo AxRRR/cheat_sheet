@@ -1,37 +1,60 @@
-import { Fragment } from "react"
-import { Childrens } from "../children/children"
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import Prism from "prismjs";
 
-export const Element = ({ elements, parentIndex }) => {
+export const Elements = ({ information }) => {
 
-    return(
-        <Fragment>
+    const [showForm, setShowForm] = useState(false);
+    const { title, code } = information;
+
+    useEffect(() => Prism.highlightAll(), [showForm]);
+
+    const editButtonHandler = () =>{
+        return showForm ? setShowForm(false) : setShowForm(true); 
+    }
+
+    const editingChange = ({ target }) => {
+        // setCurrentText({
+        //     ...currentText,
+        //     [target.name]: target.value
+        // })
+    }
+
+    const submitHandler = async(e) => {}
+
+    return ( 
+        <div>
+            <h4>{title}</h4>
+            <button 
+                onClick={() => editButtonHandler()}>
+                <FontAwesomeIcon icon={faPenToSquare} />
+            </button>
+            <pre>
+                <code className='language-javascript'>
+                    {code}
+                </code>
+            </pre>
             {
-                elements
-                    .map(({ 
-                        children, 
-                        section_title 
-                    }, elementIndex) => 
-                    <div key={elementIndex}>
-                        <h2>
-                            {section_title}
-                        </h2>
-                        {
-                            children
-                                .map(({ 
-                                    code, 
-                                    title 
-                                }, index) =>
-                        <Childrens 
-                            code={code}
-                            title={title}
-                            childrenIndex={index}
-                            elementIndex={elementIndex}
-                            parentIndex={parentIndex}
+                showForm && 
+                <form onSubmit={submitHandler}>
+                    <div>
+                        <input 
+                            name='title'
+                            placeholder='titulo' 
+                            // value={currentText.title}
+                            onChange={editingChange}
                         />
-                    )}
+                        <textarea 
+                            name='code' 
+                            placeholder='codigo' 
+                            // value={currentText.code} 
+                            onChange={editingChange}
+                        />
+                        <button type='submit'>Guardar cambios</button>
                     </div>
-                )
+                </form>
             }
-        </Fragment>
+        </div>
     )
 }

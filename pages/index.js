@@ -1,8 +1,6 @@
-
-import { useState } from 'react';
-import { Element } from '../components/elements/elements';
+import { useEffect, useState } from 'react';
+import { Elements } from '../components/elements/elements';
 import { dataContext } from '../context/dataContext';
-import { getDataByCategory } from '../firebase/controller/controller';
 
 
 const Homepage = ({ response }) => {
@@ -10,6 +8,9 @@ const Homepage = ({ response }) => {
   const [categoryData, setCategoryData] = useState({
     information: response
   }) 
+
+  const { name, id, sections } = response.response;
+
 
   return (
     <div className='homepage'>
@@ -33,18 +34,27 @@ const Homepage = ({ response }) => {
           </nav>
         </header>
         <article>
-        {
-            response.map(({ id, category, elements }, parentIndex ) => 
-            <section key={id}>
-              <h1>
-                {category}
-              </h1>
-                <Element 
-                  elements={elements} 
-                  parentIndex={parentIndex}
-                />
-            </section>)
-        }  
+          <section>
+            <h1>{name}</h1>
+            <h1>{id}</h1>
+            {
+              sections.map(({ section_title, elements }, sectionIndex) => 
+              <div key={sectionIndex}>
+                <h1>{section_title}</h1>
+                {
+                  elements.map(({ title, code }) => 
+                  <Elements 
+                    information={
+                      {
+                        title,
+                        code
+                      }
+                    }
+                  />)
+                }
+              </div>)
+            }
+          </section>
         </article>
       </dataContext.Provider>
     </div>
@@ -52,12 +62,15 @@ const Homepage = ({ response }) => {
 }
 
 export const getServerSideProps = async() => {
+  let res = null
   try {
-    // await dbConnect();
+    
+    await fetch('http://localhost:3000/api/category')
+    .then(response => response.json())
+      .then(data => res = data);
 
-    const categoryData = fetch('api/category')
-      .then((data) => data)
-        .catch((error) => error);
+      console.log(res)
+
 
   } catch (error) {
     console.log(error)
@@ -65,7 +78,7 @@ export const getServerSideProps = async() => {
 
   return {
     props: {
-      response: await getDataByCategory()
+      response: res
     },
   }
 }
