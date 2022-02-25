@@ -1,7 +1,7 @@
 
 
 .homepage{
-    color: white;
+    color: #0085bb;
     h1{
         font-family: Arial, Helvetica, sans-serif;
     }
@@ -9,7 +9,8 @@
         width: 100%;
         nav{
             z-index: 1;
-            background-color: #0c0f24;
+            background-color: #5a32a9;
+            color: white;
             width: 100%;
             position: fixed;
             top: 0;
@@ -22,6 +23,100 @@
             }
         }
     }
+    &--menuUp{
+        margin: auto;
+        width: 85%;
+        margin-top: 7rem;
+        height: auto;
+        // background-color: #0085bb;
+        button{
+            height: 3rem;
+            background-color: #5a32a9;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            // font-weight: bold;
+            font-size: .9rem;
+            margin-right: 1rem;
+            // padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            border-color: transparent;
+            background-color: #5a32a9;
+            border-radius: .5rem;
+        }
+    }
+    &--addNewSection{
+        width: 100%;
+        button{
+            background-color: transparent;
+            width: 100%;
+            border-color: transparent;
+            font-size: 5rem;
+            color: #5a32a9;
+            text-align: center;
+            cursor: pointer;
+        }
+        form{
+            input{
+                width: 100%;
+                height: 3rem;
+                margin-bottom: 1rem;
+                border-color: transparent;
+                border-radius: .5rem;
+            }
+            textarea{
+                width: 100%;
+                height: 7rem;
+                border-color: transparent;
+                border-radius: .5rem;
+            }
+            select{
+                width: 100%;
+                height: 3rem;
+                margin-bottom: 1rem;
+                border-color: transparent;
+                border-radius: .5rem;
+            }
+            button{
+                height: 3rem;
+                background-color: #5a32a9;
+                color: #ffffff;
+                font-family: Arial, Helvetica, sans-serif;
+                // font-weight: bold;
+                font-size: .9rem;
+                margin-right: 1rem;
+                // padding: 1rem;
+                text-align: center;
+                cursor: pointer;
+                border-color: transparent;
+                background-color: #5a32a9;
+                border-radius: .5rem;
+            }
+        }
+    }
+    &--buttonStyles{
+        background-color: transparent;
+        position: absolute;
+        // top: 5rem;
+        // background-color: antiquewhite;
+        left: 80%;
+        margin-top: -2rem;
+        // top: 5%;
+        right: 0rem;
+        border-color: transparent;
+        color: rgb(0, 0, 0);
+        font-size: 1.5rem;
+        &__delete{
+            left: 90%;
+            color: rgb(161, 0, 0);
+            background-color: transparent;
+            position: absolute;
+            margin-top: -2rem;
+            right: 0rem;
+            border-color: transparent;
+            font-size: 1.5rem;
+        }
+    }
     article{
         display: flex;
         flex-direction: row;
@@ -29,11 +124,11 @@
         height: 70rem;
         width: 85%;
         margin: auto;
-        margin-top: 5.5rem;
+        margin-top: 3rem;
         section{
-            box-shadow : 0px 0px 3px #495285;
+            box-shadow : 0px 0px 10px #9393cf;
             width: auto;
-            padding: 1.5rem;
+            padding: 1rem;
             position: relative;
             margin-right: 1.5rem;
             margin-bottom: 1.5rem;
@@ -49,34 +144,25 @@
                         width: 100%;
                         height: 3rem;
                         margin-bottom: 1rem;
+                        border-color: transparent;
+                        border-radius: .5rem;
                     }
                     textarea{
                         width: 100%;
                         height: 7rem;
+                        border-color: transparent;
+                        border-radius: .5rem;
                     }
-                    p{
-                        background-color: rgb(4, 255, 129);
-                        color: rgb(61, 61, 61);
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-weight: bold;
-                        font-size: 1.2rem;
-                        padding: 1rem;
-                        text-align: center;
+                    button{
                         cursor: pointer;
+                        border-color: transparent;
+                        background-color: #5a32a9;
+                        color: white;
+                        height: 3rem;
+                        border-radius: .5rem;
                     }
                 }
             }
-            // button{
-            //     background-color: transparent;
-            //     position: absolute;
-            //     top: 2.5rem;
-            //     // background-color: antiquewhite;
-            //     left: 90%;
-            //     right: 0rem;
-            //     border-color: transparent;
-            //     color: white;
-            //     font-size: 1rem;
-            // }
             // background-color: #e4e4e4;
         }
     }

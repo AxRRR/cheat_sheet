@@ -1,4 +1,4 @@
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import Prism from "prismjs";
@@ -21,18 +21,43 @@ export const Elements = ({ information }) => {
         // })
     }
 
-    const submitHandler = async(e) => {}
+    const submitHandler = async(e) => {
+        e.preventDefault();
+        await fetch("http://localhost:3000/api/element/update", {
+            method: 'post',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({ 
+            _id: _id, 
+            title: currentText.title, 
+            code: currentText.code
+            })
+        })
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+        setShowForm(false);
+
+    }
 
     return ( 
         <div>
-            <h4>{title}</h4>
+            <h4>{currentText.title}</h4>
             <button 
-                onClick={() => editButtonHandler()}>
+                onClick={() => editButtonHandler()}
+                className='homepage--buttonStyles'>
                 <FontAwesomeIcon icon={faPenToSquare} />
+            </button>
+            <button 
+                onClick={() => editButtonHandler()}
+                className='homepage--buttonStyles__delete'>
+                <FontAwesomeIcon icon={faTrashCan} />
             </button>
             <pre>
                 <code className='language-javascript'>
-                    {code}
+                    {currentText.code}
                 </code>
             </pre>
             {

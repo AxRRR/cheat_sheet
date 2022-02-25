@@ -8,9 +8,9 @@ const CategorySchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    sections: [{ 
+    _sections: [{ 
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'section' 
+        ref: 'Section' 
     }],
 });
 

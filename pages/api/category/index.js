@@ -1,15 +1,16 @@
 import dbConnect from "../../../lib/mongo";
 import category from "../../../models/category";
+import section from "../../../models/section";
 
 export default async function handler(req, res){
   await dbConnect();
 
   const response = await 
       category.findById({ _id: '62168b438da4aef8cda8da50'}).populate({
-        path: 'sections',
+        path: '_sections',
         populate: [
           {
-            path: 'elements',
+            path: '_elements',
           }
       ]
     }).exec();
@@ -24,13 +25,7 @@ export default async function handler(req, res){
 
 
 
-// Para insertar una nueva section
-// const INSERT_FIELD = new section({
-//   section_title: 'Funciones anonimas',
-//   elements: [{ _id: '621689c58da4aef8cda8da4a'}]
-// })
 
-// section.create(INSERT_FIELD);
 
 
 

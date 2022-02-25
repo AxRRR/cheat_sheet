@@ -10,4 +10,4 @@ const ElementSchema = new mongoose.Schema({
 });
 
 
-export default mongoose.models.element || mongoose.model('element', ElementSchema);
+export default mongoose.models.Element || mongoose.model('Element', ElementSchema);

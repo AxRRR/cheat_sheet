@@ -4,11 +4,11 @@ const SectionSchema = new mongoose.Schema({
     section_title: {
         type: String,
     },
-    elements: [{ 
+    _elements: [{ 
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'element',
+        ref: 'Element',
     }],
 });
 
 
-export default mongoose.models.section || mongoose.model('section', SectionSchema);
+export default mongoose.models.Section || mongoose.model('Section', SectionSchema);
