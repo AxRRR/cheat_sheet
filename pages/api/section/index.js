@@ -13,14 +13,13 @@ export default async function handler(req, res){
         const {  
             name,
             section_title,
-            _id
         } = req.body;
         
         const SECTION_DATA = await section.create({
             section_title
         });
 
-        const response = await category.findById(_id);
+        const response = await category.findOne({ name });
         response._sections.push(SECTION_DATA._id);
         await response.save();
 

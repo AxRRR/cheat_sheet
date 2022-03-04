@@ -1,41 +1,48 @@
 import dbConnect from "../../../lib/mongo";
-import category from "../../../models/category";
-
+import category from '../../../models/category';
+import element from '../../../models/element';
+import section from '../../../models/section';
 
 export default async function handler(req, res){
+  await dbConnect();
 
-    await dbConnect();
+  const { 
+    query : { 
+        name 
+    } 
+} = req;
 
-    try {
-        
-        
-        const { 
-            query : { 
-                name 
-            } 
-        } = req;
-        
-        const response = await 
-         category
-            .find({ name })
-                .populate(
-                    {
-                        path: '_sections',
-                        populate: [
-                            {
-                                path: '_elements',
-                            }
-                        ] 
-                    }
-                    ).exec();
+  // _id: '62168b438da4aef8cda8da50'
 
-        
-        return res.status(200).json({
-            status: true,
-            msg: 'Request successfully',
-            response
-        })
-    } catch (error) {
-        console.log('Ocurrio un error ' + error)   
-    }
-  }
+  const response = await 
+      category.findOne({name:name})
+      .populate({
+          path: '_sections',
+          model: 'Section',
+          populate: [{ path: '_elements', model: 'Element' }]
+      });
+
+  return res.status(200).json({
+    status: true,
+    msg: 'Request accept!',
+    response
+  })
+}
+
+
+
+
+
+
+
+
+// Para insertar una nueva category
+// category.create({
+//   id: 2,
+//   name: 'Next',
+//   sections: [
+//     {
+//       _id: '62168a668da4aef8cda8da4c'
+//     }
+//   ]
+// })

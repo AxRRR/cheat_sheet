@@ -2,11 +2,17 @@ import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import Prism from "prismjs";
+import { httpRequest } from "../../helpers/httpRequest";
 
 export const Elements = ({ information }) => {
+    const { title, code, _id } = information;
 
     const [showForm, setShowForm] = useState(false);
-    const { title, code } = information;
+    const [currentText, setCurrentText] = useState({
+        _id,
+        title,
+        code
+    });
 
     useEffect(() => Prism.highlightAll(), [showForm]);
 
@@ -15,29 +21,34 @@ export const Elements = ({ information }) => {
     }
 
     const editingChange = ({ target }) => {
-        // setCurrentText({
-        //     ...currentText,
-        //     [target.name]: target.value
-        // })
+        setCurrentText({
+            ...currentText,
+            [target.name]: target.value
+        })
+    }
+
+    const deleteButtonHandler = async(id) => {
+        await Promise.all([
+            httpRequest().post(`http://localhost:3000/api/element/delete/${id}`),
+        ])
     }
 
     const submitHandler = async(e) => {
         e.preventDefault();
-        await fetch("http://localhost:3000/api/element/update", {
-            method: 'post',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({ 
-            _id: _id, 
-            title: currentText.title, 
-            code: currentText.code
-            })
-        })
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
 
+        const [ resp ] = await Promise.all([
+            httpRequest().post('http://localhost:3000/api/element/update', { 
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    _id: _id, 
+                    title: currentText.title, 
+                    code: currentText.code
+                }), 
+            }),
+        ]);
+        setCurrentText(resp);
         setShowForm(false);
 
     }
@@ -51,7 +62,7 @@ export const Elements = ({ information }) => {
                 <FontAwesomeIcon icon={faPenToSquare} />
             </button>
             <button 
-                onClick={() => editButtonHandler()}
+                onClick={() => deleteButtonHandler(currentText._id)}
                 className='homepage--buttonStyles__delete'>
                 <FontAwesomeIcon icon={faTrashCan} />
             </button>
@@ -67,13 +78,13 @@ export const Elements = ({ information }) => {
                         <input 
                             name='title'
                             placeholder='titulo' 
-                            // value={currentText.title}
+                            value={currentText.title}
                             onChange={editingChange}
                         />
                         <textarea 
                             name='code' 
                             placeholder='codigo' 
-                            // value={currentText.code} 
+                            value={currentText.code} 
                             onChange={editingChange}
                         />
                         <button type='submit'>Guardar cambios</button>

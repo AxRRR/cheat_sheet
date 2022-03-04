@@ -16,16 +16,14 @@ export default async function handler(req, res){
             code 
         } = req.body;
 
-        console.log(req.body)
-
         const ELEMENT_DATA = 
             await element
                 .create({
-                    title: 'Prueba de crear un element',
-                    code: 'Codigo de prueba'
+                    title,
+                    code
                 });
 
-        const response = await section.findById('6218343351ab14cdc86736bf');
+        const response = await section.findById({ _id });
         response._elements.push(ELEMENT_DATA._id);
         await response.save();
 
