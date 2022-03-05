@@ -6,7 +6,7 @@ import { AddSection } from "../../add_section";
 import { LoaderComponent } from "../loader";
 
 
-export const Sidebar = ({ name_category }) => {
+export const Sidebar = ({ name_category, setElementData }) => {
     const [res, setRes] = useState();
     const [loading, setLoading] = useState();
 
@@ -38,8 +38,10 @@ export const Sidebar = ({ name_category }) => {
               {
                   res != null && loading == false ? 
                   res.response._sections
-                  .map(({ section_title }) => ( 
-                      <li>{section_title}</li>
+                  .map(({ section_title, _elements }, index) => ( 
+                      <li
+                        key={index} 
+                        onClick={() => setElementData(_elements)}>{section_title}</li>
                   ))
               : <LoaderComponent />}
           </ul>
