@@ -30,9 +30,9 @@ export const AddSection = ({ category_name }) => {
     }
 
     return (
-        <div className='homepage--menuUp'>
-            <button onClick={() => setShowForm(true)}>Agregar una nueva seccion</button>
-            <button>Eliminar una section</button>
+        <section>
+            <button onClick={() => setShowForm(true)}>Agregar sección</button>
+            <button>Eliminar sección</button>
             {showForm && <form onSubmit={addSectionHandler}>
               <h3>Rellena los campos para crear la sección</h3>
               <input 
@@ -45,6 +45,6 @@ export const AddSection = ({ category_name }) => {
               </select>
               <button type='submit'>Agregar</button>
             </form>}
-          </div>
+          </section>
     )
 }

@@ -1,25 +1,92 @@
 
 
+
 .homepage{
     color: #0085bb;
     h1{
         font-family: Arial, Helvetica, sans-serif;
     }
+    
     header{
         width: 100%;
         nav{
             z-index: 1;
-            background-color: #5a32a9;
+            background-color: transparent;
             color: white;
             width: 100%;
             position: fixed;
             top: 0;
+            font-size: 20px;
+            font-style: oblique;
+            display: flex;
             ul{
                 display: flex;
                 list-style: none;
+                width: 60%;
                 li{
                     padding: 1rem;
                     cursor: pointer;
+                }
+            }
+            button{
+                padding: .375rem .75rem;
+                border: 1px solid #007bff;
+                border-radius: .25rem;
+                color: #007bff;
+                background-color: transparent;
+                // margin-top: 1rem;
+                height: 3rem;
+                width: 16rem;
+                margin: auto;
+                font-size: 17px;
+                // margin-bottom: 2rem;
+                // margin-right: 0.3rem;
+                transition: all 1s;
+                &:hover{
+                    color: #fff;
+                    background-color: #007bff;
+                }
+            }
+            div{
+                display: flex;
+                button{
+                    padding: .375rem .75rem;
+                    border: 1px solid #007bff;
+                    border-radius: .25rem;
+                    color: #007bff;
+                    background-color: transparent;
+                    // margin-top: 1rem;
+                    height: 3rem;
+                    width: 16rem;
+                    margin: auto;
+                    font-size: 17px;
+                    margin-right: 1rem;
+                    // margin-bottom: 2rem;
+                    // margin-right: 0.3rem;
+                    transition: all 1s;
+                    &:hover{
+                        color: #fff;
+                        background-color: #007bff;
+                    }
+                }
+                input{
+                    width: 70%;
+                    margin-top: 1rem;
+                    margin-right: 2rem;
+                    height: 3.7rem;
+                    border-color: transparent;
+                    font-size: 17px;
+                    border-radius: 0.5rem;
+                    color: rgb(90, 90, 90);
+                    background-color: transparent;
+                    border-bottom-color: rgb(0, 123, 255, 0.6);
+                    transition: all 1s;
+                    &:hover{
+                        border-bottom-color: rgb(0, 123, 255);
+                    }
+                    &:focus{
+                        outline:none;
+                    }
                 }
             }
         }
@@ -28,21 +95,24 @@
         margin: auto;
         width: 85%;
         margin-top: 7rem;
+        margin-bottom: 3rem;
         height: auto;
         // background-color: #0085bb;
         button{
-            height: 3rem;
-            background-color: #5a32a9;
+            // height: 3rem;
             color: #ffffff;
+            border-color: transparent;
+            background-color: transparent;
+            // border-color: #e41c84;
+            border-color: white;
+            // border-color: 20px linear-gradient(70deg, #e41c84, #fb5fb0);
             font-family: Arial, Helvetica, sans-serif;
             // font-weight: bold;
             font-size: .9rem;
             margin-right: 1rem;
-            // padding: 1rem;
+            padding: 1.5rem;
             text-align: center;
             cursor: pointer;
-            border-color: transparent;
-            background-color: #5a32a9;
             border-radius: .5rem;
         }
     }
@@ -105,7 +175,7 @@
         // top: 5%;
         right: 0rem;
         border-color: transparent;
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
         font-size: 1.5rem;
         &__delete{
             left: 90%;
@@ -118,53 +188,60 @@
             font-size: 1.5rem;
         }
     }
-    article{
+    main{
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        height: 70rem;
-        width: 85%;
         margin: auto;
-        margin-top: 3rem;
-        section{
-            box-shadow : 0px 0px 10px #9393cf;
-            width: auto;
-            padding: 1rem;
-            position: relative;
-            margin-right: 1.5rem;
-            margin-bottom: 1.5rem;
-            form{
-                padding-top: 4rem;
-                height: auto;
-                div{
-                    width: 100%;
+        margin-top: 8rem;
+        width: 80%;
+        article{
+            // display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: 70rem;
+            width: 100%;
+            margin: auto;
+            // margin-left: 0px;
+            // background-color: #242c4c;
+            section{
+                // box-shadow : 0px 0px 10px #9393cf;
+                width: auto;
+                padding: 1rem;
+                position: relative;
+                margin-right: 1.5rem;
+                margin-bottom: 1.5rem;
+                form{
+                    padding-top: 4rem;
                     height: auto;
-                    display: flex;
-                    flex-direction: column;
-                    input{
+                    div{
                         width: 100%;
-                        height: 3rem;
-                        margin-bottom: 1rem;
-                        border-color: transparent;
-                        border-radius: .5rem;
-                    }
-                    textarea{
-                        width: 100%;
-                        height: 7rem;
-                        border-color: transparent;
-                        border-radius: .5rem;
-                    }
-                    button{
-                        cursor: pointer;
-                        border-color: transparent;
-                        background-color: #5a32a9;
-                        color: white;
-                        height: 3rem;
-                        border-radius: .5rem;
+                        height: auto;
+                        display: flex;
+                        flex-direction: column;
+                        input{
+                            width: 100%;
+                            height: 3rem;
+                            margin-bottom: 1rem;
+                            border-color: transparent;
+                            border-radius: .5rem;
+                        }
+                        textarea{
+                            width: 100%;
+                            height: 7rem;
+                            border-color: transparent;
+                            border-radius: .5rem;
+                        }
+                        button{
+                            cursor: pointer;
+                            border-color: transparent;
+                            background-color: #5a32a9;
+                            color: white;
+                            height: 3rem;
+                            border-radius: .5rem;
+                        }
                     }
                 }
+                // background-color: #e4e4e4;
             }
-            // background-color: #e4e4e4;
         }
     }
 }

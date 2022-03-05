@@ -5,6 +5,7 @@ import { httpRequest } from "../../../helpers/httpRequest";
 export const Navigation = () => {
 
     const [res, setRes] = useState(null);
+    const [showForm, setShowForm] = useState(false);
     
     useEffect(() => {
         const fetchData = async () => {
@@ -31,6 +32,16 @@ export const Navigation = () => {
                         ))
                     }
                 </ul>
+                <button onClick={() => {
+                    showForm ? setShowForm(false) : setShowForm(true)
+                }}>Agregar categoria</button>
+                {
+                    showForm && 
+                    <div>
+                        <input placeholder='Nombre de la Categoria' />
+                        <button>Aceptar</button>
+                    </div>
+                }
                 </nav>
             </header>
         </div>
