@@ -2,7 +2,7 @@
 export const LoaderComponent = ({ children }) => {
     return (
         <section className='spinnerContent'>
-            <div class="spinner"></div>
+            <div className='spinner'></div>
             {children}
         </section>
     )

@@ -1,8 +1,16 @@
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { 
+    faPenToSquare, 
+    faTrashCan 
+}                          from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
-import Prism from "prismjs";
-import { httpRequest } from "../../helpers/httpRequest";
+import { 
+    useEffect, 
+    useState
+}                          from "react";
+import Prism               from "prismjs";
+import { httpRequest }     from "../../helpers/httpRequest";
+import { LoaderComponent } from "../layout/loader";
+
 
 export const Elements = ({ information }) => {
     const { title, code, _id } = information;
@@ -14,7 +22,16 @@ export const Elements = ({ information }) => {
         code
     });
 
-    useEffect(() => Prism.highlightAll(), [showForm]);
+    useEffect(() => { 
+        
+        setCurrentText({
+            _id,
+            title,
+            code
+        })
+        Prism.highlightAll(); 
+
+    },  [information]);
 
     const editButtonHandler = () =>{
         return showForm ? setShowForm(false) : setShowForm(true); 
@@ -50,12 +67,13 @@ export const Elements = ({ information }) => {
         ]);
         setCurrentText(resp);
         setShowForm(false);
-
     }
 
     return ( 
         <div>
-            <h4>{currentText.title}</h4>
+            {information != null ?
+            <section>
+            <p>{currentText.title}</p>
             <button 
                 onClick={() => editButtonHandler()}
                 className='homepage--buttonStyles'>
@@ -71,26 +89,32 @@ export const Elements = ({ information }) => {
                     {currentText.code}
                 </code>
             </pre>
-            {
-                showForm && 
-                <form onSubmit={submitHandler}>
-                    <div>
-                        <input 
-                            name='title'
-                            placeholder='titulo' 
-                            value={currentText.title}
-                            onChange={editingChange}
-                        />
-                        <textarea 
-                            name='code' 
-                            placeholder='codigo' 
-                            value={currentText.code} 
-                            onChange={editingChange}
-                        />
-                        <button type='submit'>Guardar cambios</button>
-                    </div>
-                </form>
-            }
+        <div>
+            <p>Ultima modificacion: 05/03/2022 a las 23:00</p>
+        </div>
+        </section> 
+        : <LoaderComponent/>
+        }
+        {
+            showForm && 
+            <form onSubmit={submitHandler}>
+                <div>
+                    <input 
+                        name='title'
+                        placeholder='titulo' 
+                        value={currentText.title}
+                        onChange={editingChange}
+                    />
+                    <textarea 
+                        name='code' 
+                        placeholder='codigo' 
+                        value={currentText.code} 
+                        onChange={editingChange}
+                    />
+                    <button type='submit'>Guardar cambios</button>
+                </div>
+            </form>
+        }
         </div>
     )
 }

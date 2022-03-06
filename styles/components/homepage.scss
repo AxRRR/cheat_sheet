@@ -123,9 +123,12 @@
             width: 100%;
             border-color: transparent;
             font-size: 5rem;
-            color: #5a32a9;
+            color: #007bff;
             text-align: center;
             cursor: pointer;
+        }
+        p{
+            text-align: center;
         }
         form{
             input{
@@ -200,10 +203,14 @@
             height: 70rem;
             width: 100%;
             margin: auto;
+            font-weight: 0;
             // margin-left: 0px;
             // background-color: #242c4c;
             section{
                 // box-shadow : 0px 0px 10px #9393cf;
+                p{
+                    margin-bottom: 5rem;
+                }
                 width: auto;
                 padding: 1rem;
                 position: relative;

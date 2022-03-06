@@ -1,14 +1,19 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { Input, Menu } from "semantic-ui-react"
-import { httpRequest } from "../../../helpers/httpRequest";
-import { AddSection } from "../../add_section";
-import { LoaderComponent } from "../loader";
+import { useEffect, useState }      from "react";
+import { httpRequest }              from "../../../helpers/httpRequest";
+import { AddSection }               from "../../add_section";
+import { LoaderComponent }          from "../loader";
 
 
-export const Sidebar = ({ name_category, setElementData }) => {
+export const Sidebar = ({ 
+      name_category, 
+      setElementData, 
+      setSectionId, 
+      setLoading, 
+      loading
+    }) => {
+
+
     const [res, setRes] = useState();
-    const [loading, setLoading] = useState();
 
     useEffect(() => {
 
@@ -36,15 +41,28 @@ export const Sidebar = ({ name_category, setElementData }) => {
           </section>
           <ul>
               {
-                  res != null && loading == false ? 
+                  res != null && !loading ? 
                   res.response._sections
-                  .map(({ section_title, _elements }, index) => ( 
+                  .map(({ _id, section_title, _elements }, index) => ( 
                       <li
                         key={index} 
-                        onClick={() => setElementData(_elements)}>{section_title}</li>
+                        onClick={() => {
+                            _elements.length === 0 
+                            ? isEmptyData(_id, setElementData, setSectionId)
+                            : isEmptyData2(setElementData, setSectionId, _elements)
+                          }
+                        }
+                          >{section_title}</li>
                   ))
               : <LoaderComponent />}
           </ul>
         </div>
       )
 }
+
+const isEmptyData = (_id, setElementData, setSectionId) => {
+  return setSectionId(_id), setElementData(null);
+} 
+const isEmptyData2 = (setElementData, setSectionId, elements) => {
+  return setSectionId(null), setElementData(null), setElementData({ ...elements[0] });
+} 

@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { httpRequest } from "../../../helpers/httpRequest";
+import Link                     from "next/link";
+import { useEffect, useState }  from "react";
+import { httpRequest }          from "../../../helpers/httpRequest";
 
 export const Navigation = () => {
 

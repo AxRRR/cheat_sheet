@@ -1,14 +1,21 @@
 import { useRouter }            from 'next/router'
-import { useState }  from 'react';
-import { Fragment } from 'react/cjs/react.production.min';
-import { Elements }             from '../../components/elements/elements';
-import { LoaderComponent } from '../../components/layout/loader';
+import { 
+  useState, 
+  Fragment,
+  useEffect
+}                               from 'react';
+import { AddNote }              from '../../components/add_note';
+import { Elements }             from '../../components/elements';
+import { LoaderComponent }      from '../../components/layout/loader';
 import { Navigation }           from '../../components/layout/navbar';
 import { Sidebar }              from '../../components/layout/sidebar';
 
 const Category = () => {
 
   const [elementData, setElementData] = useState(null);
+  const [sectionId, setSectionId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [showFormAddNote, setShowFormAddNote] = useState(false);
 
   const {
     query: {
@@ -16,37 +23,52 @@ const Category = () => {
     }
   } = useRouter();
 
+
+  useEffect(() => {
+    setShowFormAddNote(false);
+  }, [elementData]);
+
+
   return (
     <div className='homepage'>
       <Navigation />
       <main>
           <Sidebar 
             name_category={name_category} 
-            setElementData={setElementData} 
+            setLoading={setLoading}
+            setElementData={setElementData}
+            setSectionId={setSectionId}
+            loading={loading}
           />
         <article>
           <section>  
-            {
-              !!elementData 
-              ? elementData.map(({ _id, title, code }) =>
-                <Fragment>
-                    <Elements
+            
+              {loading && <LoaderComponent><p>Cargando contenido...</p></LoaderComponent>}
+
+              {elementData != null && !loading && <Fragment>
+                     <Elements
                       information={
                         {
-                          _id,
-                          title,
-                          code
+                          _id: elementData._id,
+                          title: elementData.title,
+                          code: elementData.code
                         }
                       }
                     />
                     <footer>
-                      <p>Agregar</p>
+                      <p onClick={() => { showFormAddNote ? setShowFormAddNote(false) : setShowFormAddNote(true) }}>Agregar</p>
                     </footer>
-                </Fragment>
-                )
-              : <LoaderComponent>
-                  <p>Cargando contenido</p>
-                </LoaderComponent>}
+                    {
+                      showFormAddNote && 
+                      <AddNote 
+                        showDefaultComponent={false} 
+                        sectionId={sectionId} 
+                      />
+                    }
+                </Fragment>}
+              
+              {elementData === null && !loading && <AddNote showDefaultComponent={true} sectionId={sectionId} />}
+              
               </section>
         </article>
       </main>
