@@ -2,19 +2,15 @@ import { faCirclePlus }     from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon }  from "@fortawesome/react-fontawesome"
 import { useState }         from "react"
 import { httpRequest }      from "../../helpers/httpRequest"
+import { useForm } from "../../hooks/useForm"
 
 
 export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
 
-    const [showForm, setShowForm] = useState(false);
-    const [currentText, setCurrentText] = useState();
-
-    const editingChange = ({ target }) => {
-        setCurrentText({
-            ...currentText,
-            [target.name]: target.value
-        })
-    }
+    const [form, inputChange, showFormChange, showForm, setShowForm] = useForm({
+        title: '',
+        code: ''
+    });
 
     const addNoteHandler = async(e) => {
         e.preventDefault();
@@ -26,9 +22,8 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                 },
                 body: JSON.stringify({ 
                     _id: sectionId, 
-                    title: currentText.title, 
-                    code: currentText.code,
-                    date: new Date()
+                    title: form.title, 
+                    code: form.code
                 }), 
             }),
         ]);
@@ -42,10 +37,7 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                 showDefaultComponent && 
                     <div>
                         <p>No hemos encontrado información para mostrar. ¡Empieza a llenarlo!</p>
-                        <button onClick={() => {
-                                return showForm ? setShowForm(false) : setShowForm(true)
-                            }
-                        }>
+                        <button onClick={showFormChange}>
                         <FontAwesomeIcon icon={faCirclePlus} />
                         </button>
                     </div>
@@ -55,12 +47,12 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                     <form onSubmit={addNoteHandler}>
                         <input 
                             name='title'
-                            onChange={editingChange}
+                            onChange={inputChange}
                             placeholder='Titulo del a nota'
                         />
                         <textarea 
                             name='code'
-                            onChange={editingChange}
+                            onChange={inputChange}
                             placeholder='Escribe el código'
                         />
                         <select>
@@ -75,12 +67,12 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                     <form onSubmit={addNoteHandler}>
                         <input 
                             name='title'
-                            onChange={editingChange}
+                            onChange={inputChange}
                             placeholder='Titulo del a nota'
                         />
                         <textarea 
                             name='code'
-                            onChange={editingChange}
+                            onChange={inputChange}
                             placeholder='Escribe el código'
                         />
                         <select>

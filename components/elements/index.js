@@ -10,17 +10,29 @@ import {
 import Prism               from "prismjs";
 import { httpRequest }     from "../../helpers/httpRequest";
 import { LoaderComponent } from "../layout/loader";
+import { useForm }         from "../../hooks/useForm";
 
 
 export const Elements = ({ information }) => {
+
     const { title, code, _id, dateChange } = information;
 
-    const [showForm, setShowForm] = useState(false);
     const [currentText, setCurrentText] = useState({
         _id,
         title,
         code,
         dateChange
+    });
+
+    const [
+        form, 
+        inputChange, 
+        showFormChange, 
+        showForm, 
+        setShowForm
+    ] = useForm({
+        title: title,
+        code: code
     });
 
     useEffect(() => { 
@@ -38,24 +50,7 @@ export const Elements = ({ information }) => {
 
         Prism.highlightAll(); 
     
-    }, [showForm])
-
-    const editButtonHandler = () =>{
-        return showForm ? setShowForm(false) : setShowForm(true); 
-    }
-
-    const editingChange = ({ target }) => {
-        setCurrentText({
-            ...currentText,
-            [target.name]: target.value
-        })
-    }
-
-    const deleteButtonHandler = async(id) => {
-        await Promise.all([
-            httpRequest().post(`http://localhost:3000/api/element/delete/${id}`),
-        ])
-    }
+    }, [showForm]);
 
     const submitHandler = async(e) => {
         e.preventDefault();
@@ -67,8 +62,8 @@ export const Elements = ({ information }) => {
                 },
                 body: JSON.stringify({ 
                     _id: _id, 
-                    title: currentText.title, 
-                    code: currentText.code
+                    title: form.title, 
+                    code: form.code
                 }), 
             }),
         ]);
@@ -80,20 +75,24 @@ export const Elements = ({ information }) => {
         <div>
             {information != null ?
             <section>
-            <p>{currentText.title}</p>
+            <p>{form.title}</p>
             <button 
-                onClick={() => editButtonHandler()}
+                onClick={showFormChange}
                 className='homepage--buttonStyles'>
                 <FontAwesomeIcon icon={faPenToSquare} />
             </button>
             <button 
-                onClick={() => deleteButtonHandler(currentText._id)}
+                onClick={async() => {
+                    await Promise.all([
+                        httpRequest().post(`http://localhost:3000/api/element/delete/${currentText._id}`),
+                    ])
+                }}
                 className='homepage--buttonStyles__delete'>
                 <FontAwesomeIcon icon={faTrashCan} />
             </button>
             <pre>
                 <code className='language-javascript'>
-                    {currentText.code}
+                    {form.code}
                 </code>
             </pre>
         <div>
@@ -109,14 +108,14 @@ export const Elements = ({ information }) => {
                     <input 
                         name='title'
                         placeholder='titulo' 
-                        value={currentText.title}
-                        onChange={editingChange}
+                        value={form.title}
+                        onChange={inputChange}
                     />
                     <textarea 
                         name='code' 
                         placeholder='codigo' 
-                        value={currentText.code} 
-                        onChange={editingChange}
+                        value={form.code} 
+                        onChange={inputChange}
                     />
                     <button type='submit'>Guardar cambios</button>
                 </div>

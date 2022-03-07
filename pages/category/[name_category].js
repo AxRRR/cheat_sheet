@@ -48,7 +48,8 @@ const Category = () => {
 
               {elementData != null && !loading && 
                 <Fragment>
-                     {elementData.map(({ _id, title, code, dateChange }) => <Elements
+                     {elementData.map(({ _id, title, code, dateChange }) => 
+                     <Elements
                       information={
                         {
                           _id,

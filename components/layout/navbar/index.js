@@ -1,11 +1,12 @@
 import Link                     from "next/link";
 import { useEffect, useState }  from "react";
 import { httpRequest }          from "../../../helpers/httpRequest";
+import { AddCategory } from "../../add_category";
 
 export const Navigation = () => {
 
     const [res, setRes] = useState(null);
-    const [showForm, setShowForm] = useState(false);
+    
     
     useEffect(() => {
         const fetchData = async () => {
@@ -32,16 +33,7 @@ export const Navigation = () => {
                         ))
                     }
                 </ul>
-                <button onClick={() => {
-                    showForm ? setShowForm(false) : setShowForm(true)
-                }}>Agregar categoria</button>
-                {
-                    showForm && 
-                    <div>
-                        <input placeholder='Nombre de la Categoria' />
-                        <button>Aceptar</button>
-                    </div>
-                }
+                <AddCategory />
                 </nav>
             </header>
         </div>

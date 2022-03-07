@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { httpRequest } from "../../helpers/httpRequest";
+import { useForm } from "../../hooks/useForm";
 
 
 export const AddSection = ({ name_category }) => {
-    const [showForm, setShowForm] = useState(false);
-    const [currentText, setCurrentText] = useState();
+    // const [currentText, setCurrentText] = useState();
+
+    const [form, inputChange, showFormChange, showForm] = useForm({
+      section_title: ''
+    });
 
     const addSectionHandler = async(e) => {
         e.preventDefault();
@@ -16,30 +20,23 @@ export const AddSection = ({ name_category }) => {
               },
               body: JSON.stringify({ 
                 name: name_category, 
-                section_title: currentText.section_title
+                section_title: form.section_title
               }), 
           }),
       ]);
     }
 
-    const editingChange = ({ target }) => {
-        setCurrentText({
-            ...currentText,
-            [target.name]: target.value
-        })
-    }
-
     return (
         <section>
-            <button onClick={() => setShowForm(true)}>Agregar sección</button>
+            <button onClick={showFormChange}>Agregar sección</button>
             <button>Eliminar sección</button>
             {showForm && <form onSubmit={addSectionHandler}>
               <h3>Rellena los campos para crear la sección</h3>
               <input 
                 name='section_title'
-                onChange={editingChange} 
+                onChange={inputChange} 
               />
-              <select onChange={editingChange}>
+              <select onChange={inputChange}>
                 <option>Notas</option>
                 <option>Código</option>
               </select>
