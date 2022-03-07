@@ -1,3 +1,8 @@
+@import './colors';
+
+@import './mixins/inputs';
+@import './mixins/buttons';
+
 @import './components/homepage.scss';
 @import './components/spinner.scss';
 @import './components/sidebar.scss';

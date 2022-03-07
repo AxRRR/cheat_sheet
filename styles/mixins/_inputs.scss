@@ -1,0 +1,16 @@
+
+@mixin InputStyle() {
+    border-radius: 0.5rem;
+    color: rgb(90, 90, 90);
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom-color: rgb(0, 123, 255, 0.6);
+    transition: all 1s;
+    &:hover{
+        border-bottom-color: $PRIMARY_COLOR;
+    }
+    &:focus{
+        outline: none;
+    }
+    @content
+}

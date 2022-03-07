@@ -2,7 +2,7 @@ import { useState } from "react";
 import { httpRequest } from "../../helpers/httpRequest";
 
 
-export const AddSection = ({ category_name }) => {
+export const AddSection = ({ name_category }) => {
     const [showForm, setShowForm] = useState(false);
     const [currentText, setCurrentText] = useState();
 
@@ -15,7 +15,7 @@ export const AddSection = ({ category_name }) => {
                   'Content-type': 'application/json'
               },
               body: JSON.stringify({ 
-                name: category_name, 
+                name: name_category, 
                 section_title: currentText.section_title
               }), 
           }),

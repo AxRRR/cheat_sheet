@@ -13,13 +13,14 @@ import { LoaderComponent } from "../layout/loader";
 
 
 export const Elements = ({ information }) => {
-    const { title, code, _id } = information;
+    const { title, code, _id, dateChange } = information;
 
     const [showForm, setShowForm] = useState(false);
     const [currentText, setCurrentText] = useState({
         _id,
         title,
-        code
+        code,
+        dateChange
     });
 
     useEffect(() => { 
@@ -27,11 +28,17 @@ export const Elements = ({ information }) => {
         setCurrentText({
             _id,
             title,
-            code
-        })
-        Prism.highlightAll(); 
+            code,
+            dateChange
+        });
 
     },  [information]);
+
+    useEffect(() => {
+
+        Prism.highlightAll(); 
+    
+    }, [showForm])
 
     const editButtonHandler = () =>{
         return showForm ? setShowForm(false) : setShowForm(true); 
@@ -90,7 +97,7 @@ export const Elements = ({ information }) => {
                 </code>
             </pre>
         <div>
-            <p>Ultima modificacion: 05/03/2022 a las 23:00</p>
+            <p>Ultima modificacion {currentText.dateChange.date} a las {currentText.dateChange.time}</p>
         </div>
         </section> 
         : <LoaderComponent/>

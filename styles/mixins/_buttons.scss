@@ -1,0 +1,17 @@
+
+@mixin ButtonStyle() {
+    background-color: $PRIMARY_COLOR;
+    text-align: center;
+    padding: .375rem .75rem;
+    border: 1px solid $PRIMARY_COLOR;
+    border-radius: .25rem;
+    color: $PRIMARY_COLOR;
+    background-color: transparent;
+    margin: auto;
+    transition: all 1s;
+    &:hover{
+        color: #fff;
+        background-color: $PRIMARY_COLOR;
+    }
+    @content
+}

@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 
 const SectionSchema = new mongoose.Schema({
     section_title: {
-        type: String,
+        type: String
+    },
+    section_date: {
+        type: Date
     },
     _elements: [{ 
         type: mongoose.Schema.Types.ObjectId,

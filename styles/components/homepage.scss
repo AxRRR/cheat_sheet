@@ -1,5 +1,6 @@
 
-
+@import '../mixins/inputs';
+@import '../mixins/buttons';
 
 .homepage{
     color: #0085bb;
@@ -29,63 +30,26 @@
                 }
             }
             button{
-                padding: .375rem .75rem;
-                border: 1px solid #007bff;
-                border-radius: .25rem;
-                color: #007bff;
-                background-color: transparent;
-                // margin-top: 1rem;
-                height: 3rem;
-                width: 16rem;
-                margin: auto;
-                font-size: 17px;
-                // margin-bottom: 2rem;
-                // margin-right: 0.3rem;
-                transition: all 1s;
-                &:hover{
-                    color: #fff;
-                    background-color: #007bff;
-                }
-            }
-            div{
-                display: flex;
-                button{
-                    padding: .375rem .75rem;
-                    border: 1px solid #007bff;
-                    border-radius: .25rem;
-                    color: #007bff;
-                    background-color: transparent;
-                    // margin-top: 1rem;
+                @include ButtonStyle(){
                     height: 3rem;
                     width: 16rem;
                     margin: auto;
                     font-size: 17px;
-                    margin-right: 1rem;
-                    // margin-bottom: 2rem;
-                    // margin-right: 0.3rem;
-                    transition: all 1s;
-                    &:hover{
-                        color: #fff;
-                        background-color: #007bff;
-                    }
+                }
+                
+            }
+            div{
+                display: flex;
+                button{
+                    @include ButtonStyle()
                 }
                 input{
-                    width: 70%;
-                    margin-top: 1rem;
-                    margin-right: 2rem;
-                    height: 3.7rem;
-                    border-color: transparent;
-                    font-size: 17px;
-                    border-radius: 0.5rem;
-                    color: rgb(90, 90, 90);
-                    background-color: transparent;
-                    border-bottom-color: rgb(0, 123, 255, 0.6);
-                    transition: all 1s;
-                    &:hover{
-                        border-bottom-color: rgb(0, 123, 255);
-                    }
-                    &:focus{
-                        outline:none;
+                    @include InputStyle(){
+                        margin-top: 1rem;
+                        margin-right: 2rem;
+                        height: 3.7rem;
+                        width: 70%;
+                        font-size: 17px;
                     }
                 }
             }
@@ -132,50 +96,46 @@
         }
         form{
             input{
-                width: 100%;
-                height: 3rem;
-                margin-bottom: 1rem;
-                border-color: transparent;
-                border-radius: .5rem;
+                @include InputStyle(){
+                    width: 100%;
+                    height: 3rem;
+                    margin-bottom: 1rem;
+                    border-color: transparent;
+                    border-radius: .5rem;
+                }
             }
             textarea{
-                width: 100%;
-                height: 7rem;
-                border-color: transparent;
-                border-radius: .5rem;
+                @include InputStyle(){
+                    width: 100%;
+                    height: 7rem;
+                    border-color: transparent;
+                    border-radius: .5rem;
+                }
             }
             select{
-                width: 100%;
-                height: 3rem;
-                margin-bottom: 1rem;
-                border-color: transparent;
-                border-radius: .5rem;
+                @include InputStyle(){
+                    width: 100%;
+                    height: 3rem;
+                    margin-bottom: 1rem;
+                    border-color: transparent;
+                    border-radius: .5rem;
+                }
             }
             button{
-                height: 3rem;
-                background-color: #5a32a9;
-                color: #ffffff;
-                font-family: Arial, Helvetica, sans-serif;
-                // font-weight: bold;
-                font-size: .9rem;
-                margin-right: 1rem;
-                // padding: 1rem;
-                text-align: center;
-                cursor: pointer;
-                border-color: transparent;
-                background-color: #5a32a9;
-                border-radius: .5rem;
+                @include ButtonStyle(){
+                    height: 3rem;
+                    font-size: .9rem;
+                    margin-right: 1rem;
+                    cursor: pointer;
+                }
             }
         }
     }
     &--buttonStyles{
         background-color: transparent;
         position: absolute;
-        // top: 5rem;
-        // background-color: antiquewhite;
         left: 80%;
         margin-top: -2rem;
-        // top: 5%;
         right: 0rem;
         border-color: transparent;
         color: rgb(255, 255, 255);
@@ -210,6 +170,16 @@
                 // box-shadow : 0px 0px 10px #9393cf;
                 p{
                     margin-bottom: 5rem;
+                }
+                footer{
+                    p{
+                        @include ButtonStyle(){
+                            height: 3rem;
+                            width: 100%;
+                            font-size: 17px;
+                            margin-right: 1rem;
+                        }
+                    }
                 }
                 width: auto;
                 padding: 1rem;

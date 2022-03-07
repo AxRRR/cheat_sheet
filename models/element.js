@@ -4,6 +4,14 @@ const ElementSchema = new mongoose.Schema({
     title: {
         type: String,
     },
+    dateChange: {
+        time: {
+            type: String
+        },
+        date: {
+            type: String
+        }
+    },
     code: {
         type: String,
     }

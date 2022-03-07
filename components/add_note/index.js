@@ -27,7 +27,8 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                 body: JSON.stringify({ 
                     _id: sectionId, 
                     title: currentText.title, 
-                    code: currentText.code
+                    code: currentText.code,
+                    date: new Date()
                 }), 
             }),
         ]);
@@ -55,10 +56,12 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                         <input 
                             name='title'
                             onChange={editingChange}
+                            placeholder='Titulo del a nota'
                         />
                         <textarea 
                             name='code'
                             onChange={editingChange}
+                            placeholder='Escribe el código'
                         />
                         <select>
                             <option>Código</option>
@@ -73,10 +76,12 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                         <input 
                             name='title'
                             onChange={editingChange}
+                            placeholder='Titulo del a nota'
                         />
                         <textarea 
                             name='code'
                             onChange={editingChange}
+                            placeholder='Escribe el código'
                         />
                         <select>
                             <option>Código</option>

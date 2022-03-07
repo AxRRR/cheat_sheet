@@ -49,7 +49,7 @@ export const Sidebar = ({
                         onClick={() => {
                             _elements.length === 0 
                             ? isEmptyData(_id, setElementData, setSectionId)
-                            : isEmptyData2(setElementData, setSectionId, _elements)
+                            : isEmptyData2(_id, setElementData, setSectionId, _elements)
                           }
                         }
                           >{section_title}</li>
@@ -63,6 +63,6 @@ export const Sidebar = ({
 const isEmptyData = (_id, setElementData, setSectionId) => {
   return setSectionId(_id), setElementData(null);
 } 
-const isEmptyData2 = (setElementData, setSectionId, elements) => {
-  return setSectionId(null), setElementData(null), setElementData({ ...elements[0] });
+const isEmptyData2 = (_id, setElementData, setSectionId, elements) => {
+  return setSectionId(_id), setElementData(elements);
 } 
