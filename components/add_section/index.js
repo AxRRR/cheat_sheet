@@ -4,7 +4,6 @@ import { useForm } from "../../hooks/useForm";
 
 
 export const AddSection = ({ name_category }) => {
-    // const [currentText, setCurrentText] = useState();
 
     const [form, inputChange, showFormChange, showForm] = useForm({
       section_title: ''
@@ -29,17 +28,17 @@ export const AddSection = ({ name_category }) => {
     return (
         <section>
             <button onClick={showFormChange}>Agregar sección</button>
-            <button>Eliminar sección</button>
+            {/* <button onClick={() => onSelectDelete(true)}>Eliminar sección</button> */}
             {showForm && <form onSubmit={addSectionHandler}>
               <h3>Rellena los campos para crear la sección</h3>
               <input 
                 name='section_title'
                 onChange={inputChange} 
               />
-              <select onChange={inputChange}>
+              {/* <select onChange={inputChange}>
                 <option>Notas</option>
                 <option>Código</option>
-              </select>
+              </select> */}
               <button type='submit'>Agregar</button>
             </form>}
           </section>

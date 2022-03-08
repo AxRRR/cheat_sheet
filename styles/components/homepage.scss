@@ -61,35 +61,45 @@
         margin-top: 7rem;
         margin-bottom: 3rem;
         height: auto;
-        // background-color: #0085bb;
         button{
-            // height: 3rem;
-            color: #ffffff;
-            border-color: transparent;
-            background-color: transparent;
-            // border-color: #e41c84;
-            border-color: white;
-            // border-color: 20px linear-gradient(70deg, #e41c84, #fb5fb0);
-            font-family: Arial, Helvetica, sans-serif;
-            // font-weight: bold;
-            font-size: .9rem;
-            margin-right: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            border-radius: .5rem;
+            // // height: 3rem;
+            // color: #ffffff;
+            // border-color: transparent;
+            // background-color: transparent;
+            // // border-color: #e41c84;
+            // border-color: white;
+            // // border-color: 20px linear-gradient(70deg, #e41c84, #fb5fb0);
+            // font-family: Arial, Helvetica, sans-serif;
+            // // font-weight: bold;
+            // font-size: .9rem;
+            // margin-right: 1rem;
+            // padding: 1.5rem;
+            // text-align: center;
+            // cursor: pointer;
+            // border-radius: .5rem;
+            @include ButtonStyle(){
+                border-color: transparent;
+                background-color: transparent;
+                font-size: .9rem;
+                margin-right: 1rem;
+                padding: 1.5rem;
+                text-align: center;
+                cursor: pointer;
+                border-radius: .5rem;
+            }
         }
     }
     &--addNewSection{
         width: 100%;
         button{
-            background-color: transparent;
-            width: 100%;
-            border-color: transparent;
-            font-size: 5rem;
-            color: #007bff;
-            text-align: center;
-            cursor: pointer;
+            @include ButtonStyle(){
+                background-color: transparent;
+                width: 100%;
+                font-size: 5rem;
+                text-align: center;
+                border-color: transparent;
+                cursor: pointer;
+            }
         }
         p{
             text-align: center;
@@ -195,25 +205,31 @@
                         display: flex;
                         flex-direction: column;
                         input{
-                            width: 100%;
-                            height: 3rem;
-                            margin-bottom: 1rem;
-                            border-color: transparent;
-                            border-radius: .5rem;
+                            @include InputStyle(){
+                                width: 100%;
+                                height: 3rem;
+                                margin-bottom: 1rem;
+                                border-color: transparent;
+                                border-radius: .5rem;
+                            }
                         }
                         textarea{
-                            width: 100%;
-                            height: 7rem;
-                            border-color: transparent;
-                            border-radius: .5rem;
+                            @include InputStyle(){
+                                width: 100%;
+                                height: 12rem;
+                                margin-bottom: 1rem;
+                                border-color: transparent;
+                                border-radius: .5rem;
+                                font-size: 20px;
+                            }
                         }
                         button{
-                            cursor: pointer;
-                            border-color: transparent;
-                            background-color: #5a32a9;
-                            color: white;
-                            height: 3rem;
-                            border-radius: .5rem;
+                            @include ButtonStyle(){
+                                height: 3rem;
+                                width: 100%;
+                                font-size: 17px;
+                                margin-right: 1rem;
+                            }
                         }
                     }
                 }

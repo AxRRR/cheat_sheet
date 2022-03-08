@@ -19,6 +19,9 @@ export const Navigation = () => {
           fetchData();
     }, []);
 
+    const firstLetterUpperCase = (category_name) => { 
+    }
+
     return (
         <div className='homepage'>
             <header>
@@ -28,7 +31,7 @@ export const Navigation = () => {
                     {
                         !!res && res.response.map((category, index) => (
                             <Link href={`/category/${category.name}`}><li key={index}>
-                                {category.name}
+                                {category.name.replace(/\b\w/g, l => l.toUpperCase())}
                             </li></Link>
                         ))
                     }
