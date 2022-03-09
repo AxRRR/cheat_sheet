@@ -1,8 +1,7 @@
 import { faCirclePlus }     from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon }  from "@fortawesome/react-fontawesome"
-import { useState }         from "react"
 import { httpRequest }      from "../../helpers/httpRequest"
-import { useForm } from "../../hooks/useForm"
+import { useForm }          from "../../hooks/useForm"
 
 
 export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
@@ -37,7 +36,11 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
                 showDefaultComponent && 
                     <div>
                         <p>No hemos encontrado información para mostrar. ¡Empieza a llenarlo!</p>
-                        <button onClick={showFormChange}>
+                        <button onClick={
+                            sectionId != null 
+                                ? showFormChange 
+                                : () => window.alert('Antes por favor selecciona una sección')
+                        }>
                         <FontAwesomeIcon icon={faCirclePlus} />
                         </button>
                     </div>

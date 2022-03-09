@@ -39,16 +39,30 @@
                 
             }
             div{
-                display: flex;
+                position: fixed;
+                width: 28rem;
+                top: 7%;
+                left: 65%;
+                padding: 1rem;
+                border-radius: .5rem;
+                transition: all 7s;
+                background-color: lighten($color: #0e0f1d, $amount: 4);
+                p{
+                    font-size: 15px;
+                    margin-top: 1.5rem;
+                    text-align: center;
+                }
                 button{
-                    @include ButtonStyle()
+                    @include ButtonStyle(){
+                        width: 100%;
+                    }
                 }
                 input{
                     @include InputStyle(){
-                        margin-top: 1rem;
-                        margin-right: 2rem;
+                        margin-top: 2.5rem;
                         height: 3.7rem;
-                        width: 70%;
+                        width: 100%;
+                        margin-bottom: 4rem;
                         font-size: 17px;
                     }
                 }
@@ -62,21 +76,6 @@
         margin-bottom: 3rem;
         height: auto;
         button{
-            // // height: 3rem;
-            // color: #ffffff;
-            // border-color: transparent;
-            // background-color: transparent;
-            // // border-color: #e41c84;
-            // border-color: white;
-            // // border-color: 20px linear-gradient(70deg, #e41c84, #fb5fb0);
-            // font-family: Arial, Helvetica, sans-serif;
-            // // font-weight: bold;
-            // font-size: .9rem;
-            // margin-right: 1rem;
-            // padding: 1.5rem;
-            // text-align: center;
-            // cursor: pointer;
-            // border-radius: .5rem;
             @include ButtonStyle(){
                 border-color: transparent;
                 background-color: transparent;
@@ -167,17 +166,13 @@
         margin-top: 8rem;
         width: 80%;
         article{
-            // display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             height: 70rem;
             width: 100%;
             margin: auto;
             font-weight: 0;
-            // margin-left: 0px;
-            // background-color: #242c4c;
             section{
-                // box-shadow : 0px 0px 10px #9393cf;
                 p{
                     margin-bottom: 5rem;
                 }
@@ -233,7 +228,6 @@
                         }
                     }
                 }
-                // background-color: #e4e4e4;
             }
         }
     }

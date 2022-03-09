@@ -27,13 +27,13 @@ export const AddSection = ({ name_category }) => {
 
     return (
         <section>
-            <button onClick={showFormChange}>Agregar sección</button>
-            {/* <button onClick={() => onSelectDelete(true)}>Eliminar sección</button> */}
+            <button onClick={showFormChange}>{showForm ? 'Ocultar formulario' : 'Agregar sección'}</button>
             {showForm && <form onSubmit={addSectionHandler}>
-              <h3>Rellena los campos para crear la sección</h3>
+              <p>Rellena el campo nombre para crear la nueva sección.</p>
               <input 
                 name='section_title'
-                onChange={inputChange} 
+                onChange={inputChange}
+                placeholder='Nombre de la categoria' 
               />
               {/* <select onChange={inputChange}>
                 <option>Notas</option>

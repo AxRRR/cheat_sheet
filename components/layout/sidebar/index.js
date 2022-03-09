@@ -19,7 +19,7 @@ export const Sidebar = ({
 
     const [res, setRes] = useState();
 
-    const [form, inputChange, showChange, isSearching] = useForm({
+    const [form, inputChange] = useForm({
       search: ''
     });
 
@@ -41,7 +41,7 @@ export const Sidebar = ({
         
     }, [name_category]);
 
-    
+
     // Search function
     const findInSections = () => {
       const getSections =
@@ -92,7 +92,7 @@ export const Sidebar = ({
                             <ShowSection 
                               payload={
                               { 
-                                index,
+                                  index,
                                   _id,
                                   section_title,
                                   _elements

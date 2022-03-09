@@ -13,10 +13,10 @@ import Prism                    from "prismjs";
 
 const Category = () => {
 
-  const [elementData, setElementData] = useState(null);
-  const [sectionId, setSectionId] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [showFormAddNote, setShowFormAddNote] = useState(false);
+  const [elementData, setElementData] =           useState(null);
+  const [sectionId, setSectionId] =               useState(null);
+  const [loading, setLoading] =                   useState(false);
+  const [showFormAddNote, setShowFormAddNote] =   useState(false);
 
   const {
     query: {
@@ -46,7 +46,9 @@ const Category = () => {
             
               {loading && <LoaderComponent><p>Cargando contenido...</p></LoaderComponent>}
 
-              {elementData != null && !loading && 
+              {
+                elementData != null 
+                && !loading && 
                 <Fragment>
                      {elementData.map(({ _id, title, code, dateChange }) => 
                      <Elements
@@ -77,11 +79,11 @@ const Category = () => {
               }
               {
                 elementData === null && 
-                !loading && 
-                <AddNote 
-                  showDefaultComponent={true} 
-                  sectionId={sectionId} 
-                />
+                  !loading && 
+                    <AddNote 
+                      showDefaultComponent={true} 
+                      sectionId={sectionId} 
+                    />
               }
               </section>
         </article>

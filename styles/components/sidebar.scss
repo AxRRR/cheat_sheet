@@ -8,6 +8,13 @@
     margin-right: 2rem;
     background-color: darken($color: #0e0f1d, $amount: 1);
     border-radius: 1rem;
+    section{
+        form{
+            input{
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
     li{
         color: rgb(116, 116, 116);
         font-size: 17px;

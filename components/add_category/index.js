@@ -32,6 +32,7 @@ export const AddCategory = () => {
                     showForm && 
                     <div>
                         <form onSubmit={addCategoryHandler}>
+                            <p>Introduce el nombre de la nueva categoria:</p>
                             <input 
                                 placeholder='Nombre de la Categoria' 
                                 name='category_name'

@@ -1,7 +1,7 @@
 import Link                     from "next/link";
 import { useEffect, useState }  from "react";
 import { httpRequest }          from "../../../helpers/httpRequest";
-import { AddCategory } from "../../add_category";
+import { AddCategory }          from "../../add_category";
 
 export const Navigation = () => {
 
@@ -18,9 +18,6 @@ export const Navigation = () => {
     
           fetchData();
     }, []);
-
-    const firstLetterUpperCase = (category_name) => { 
-    }
 
     return (
         <div className='homepage'>
