@@ -2,6 +2,72 @@
 @import '../mixins/inputs';
 @import '../mixins/buttons';
 
+.home{
+    width: 80%;
+    margin: auto;
+    margin-top: 7rem;
+    padding: 1.5rem;
+    text-align: center;
+    h3{
+        font-size: 4rem;
+    }
+    button{
+        @include ButtonStyle()
+    }
+    section{
+        h4{
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        margin-top: 6rem;
+        text-align: left;
+        div{
+            width: 50%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            
+            article{
+                height: 10rem;
+                width: 45%;
+                text-align: center;
+                border-radius: .5rem;
+                cursor: pointer;
+                background-color: darken($color: #0e0f1d, $amount: 1);
+                margin-left: 1.7rem;
+                margin-bottom: 1.7rem;
+                transform-origin: 0% 100%;
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+                display: inline-block;
+                &::after{
+                    content: "";
+                    background: $PRIMARY_COLOR;
+                    position: absolute;
+                    z-index: -1;
+                    display: block;
+                    left: -50%;
+                    right: -50%;
+                    top: -150%;
+                    bottom: -150%;
+                    transform: scale(10, 0);
+                    transition: all 0.4s ease;
+                }
+                &:hover::after{
+                    transition: all 2s ease-out;
+                    transform: scale(1, 1);
+                }
+                p{
+                    font-size: 2rem;
+                    font-weight: bolder;
+                    padding-top: 3.5rem;
+                }
+            }
+        }
+    }
+}
+
 .homepage{
     color: #0085bb;
     h1{
@@ -13,6 +79,7 @@
         nav{
             z-index: 1;
             background-color: transparent;
+            background-color: lighten($color: #0e0f1d, $amount: 4);
             color: white;
             width: 100%;
             position: fixed;

@@ -6,8 +6,7 @@ import { AddCategory }          from "../../add_category";
 export const Navigation = () => {
 
     const [res, setRes] = useState(null);
-    
-    
+
     useEffect(() => {
         const fetchData = async () => {
             const [ resp ] = await Promise.all([

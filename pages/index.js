@@ -1,89 +1,53 @@
-import { Button, Card, Container, Header, Image } from "semantic-ui-react";
-import { Navigation } from "../components/layout/navbar";
+import { useEffect, useState } from 'react';
+import { httpRequest } from '../helpers/httpRequest';
+import Link                     from "next/link";
+import { Footer } from '../components/layout/footer';
 
 const Homepage = () => {
 
+  const [res, setRes] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const [ resp ] = await Promise.all([
+                httpRequest().get('http://localhost:3000/api/categories'),
+            ]);
+            setRes(resp);
+          }
+    
+          fetchData();
+    }, []);
   
   return (
     <div>
-      <Navigation />
-      <Container text>
-        <Header as='h2'>Header</Header>
-          <Card.Group>
-          <Card>
-            <Card.Content>
-              <Image
-                floated='right'
-                size='mini'
-                src='/images/avatar/large/steve.jpg'
-              />
-              <Card.Header>Steve Sanders</Card.Header>
-              <Card.Meta>Friends of Elliot</Card.Meta>
-              <Card.Description>
-                Steve wants to add you to the group <strong>best friends</strong>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <div className='ui two buttons'>
-                <Button basic color='green'>
-                  Approve
-                </Button>
-                <Button basic color='red'>
-                  Decline
-                </Button>
-              </div>
-            </Card.Content>
-          </Card>
-          <Card>
-            <Card.Content>
-              <Image
-                floated='right'
-                size='mini'
-                src='/images/avatar/large/molly.png'
-              />
-              <Card.Header>Molly Thomas</Card.Header>
-              <Card.Meta>New User</Card.Meta>
-              <Card.Description>
-                Molly wants to add you to the group <strong>musicians</strong>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <div className='ui two buttons'>
-                <Button basic color='green'>
-                  Approve
-                </Button>
-                <Button basic color='red'>
-                  Decline
-                </Button>
-              </div>
-            </Card.Content>
-          </Card>
-          <Card>
-            <Card.Content>
-              <Image
-                floated='right'
-                size='mini'
-                src='/images/avatar/large/jenny.jpg'
-              />
-              <Card.Header>Jenny Lawrence</Card.Header>
-              <Card.Meta>New User</Card.Meta>
-              <Card.Description>
-                Jenny requested permission to view your contact details
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <div className='ui two buttons'>
-                <Button basic color='green'>
-                  Approve
-                </Button>
-                <Button basic color='red'>
-                  Decline
-                </Button>
-              </div>
-            </Card.Content>
-          </Card>
-        </Card.Group>
-      </Container>
+      {/* <Navigation /> */}
+      <div className='home'>
+        <h3>
+          ¡Bienvenido a tu espacio personal para guardar código, 
+          listas y más de programación!
+        </h3>
+        <p>Si aun no cuentas con un perfil, hazlo ahora.</p>
+        <button>Crear un perfil</button>
+        <section>
+          <h4>
+            Navega por tus categorias
+          </h4>
+          <div>
+          {
+              !!res && res.response.map((category, index) => (
+                  <Link href={`/category/${category.name}`}>
+                    <article key={index}>
+                      <p>
+                        {category.name.replace(/\b\w/g, l => l.toUpperCase())}
+                      </p>
+                    </article>
+                  </Link>
+              ))
+          }
+          </div>
+        </section>
+      </div>
+      <Footer />
     </div>
   )
 }

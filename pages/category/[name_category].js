@@ -10,6 +10,7 @@ import { LoaderComponent }      from '../../components/layout/loader';
 import { Navigation }           from '../../components/layout/navbar';
 import { Sidebar }              from '../../components/layout/sidebar';
 import Prism                    from "prismjs";
+import { Footer } from '../../components/layout/footer';
 
 const Category = () => {
 
@@ -88,6 +89,7 @@ const Category = () => {
               </section>
         </article>
       </main>
+      <Footer />
     </div>
   )
 };

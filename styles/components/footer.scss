@@ -1,0 +1,28 @@
+
+
+.footer{
+    background-color: lighten($color: #0e0f1d, $amount: 4);
+    height: 20rem;
+    main{
+        display: flex;
+        width: 50%;
+        margin: auto;
+        height: 100%;
+        padding-top: 4rem;
+        section{
+            text-align: right;
+            width: 50%;
+            h1{
+                color: grey;
+            }
+            p{
+                color: grey;
+                margin-bottom: 1rem;
+                &:hover{
+                    color: $PRIMARY_COLOR;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
