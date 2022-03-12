@@ -17,7 +17,7 @@ export const Authentication = () => {
             } 
 
             const [ resp ] = await Promise.all([
-                httpRequest().get(`http://localhost:3000/api/auth/login/${passwordUser}`),
+                httpRequest().get(`${process.env.URL}auth/login/${passwordUser}`),
             ]);
 
             const { status, message } = resp;

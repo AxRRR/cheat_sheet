@@ -13,7 +13,7 @@ export const AddCategory = () => {
 
         setShowForm(false);
         await Promise.all([
-          httpRequest().post('http://localhost:3000/api/category/add', { 
+          httpRequest().post(`${process.env.URL}category/add`, { 
               headers: {
                   'Content-type': 'application/json'
               },

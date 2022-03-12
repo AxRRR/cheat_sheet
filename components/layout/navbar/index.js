@@ -10,7 +10,7 @@ export const Navigation = () => {
     useEffect(() => {
         const fetchData = async () => {
             const [ resp ] = await Promise.all([
-                httpRequest().get('http://localhost:3000/api/categories'),
+                httpRequest().get(`${process.env.URL}categories`),
             ]);
             setRes(resp);
           }

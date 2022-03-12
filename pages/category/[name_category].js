@@ -39,7 +39,7 @@ const Category = () => {
     checkLocalStorage();
     
   }, [])
-
+  
   useEffect(() => {
     setShowFormAddNote(false);
     Prism.highlightAll(); 

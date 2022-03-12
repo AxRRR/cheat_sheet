@@ -3,13 +3,13 @@ import {
   useState, 
   Fragment, 
   useContext 
-}                         from "react";
-import { categoryData } from "../../../context/categoryContext";
+}                                   from "react";
+import { categoryData }             from "../../../context/categoryContext";
 import { httpRequest }              from "../../../helpers/httpRequest";
-import { useForm } from "../../../hooks/useForm";
+import { useForm }                  from "../../../hooks/useForm";
 import { AddSection }               from "../../add_section";
 import { LoaderComponent }          from "../loader";
-import { ShowSection } from "./show_sections";
+import { ShowSection }              from "./show_sections";
 
 
 export const Sidebar = ({ 
@@ -35,21 +35,16 @@ export const Sidebar = ({
         const fetchData = async () => {
           setLoading(true)
           const [ resp ] = await Promise.all([
-              httpRequest().get(`http://localhost:3000/api/category/${name_category}`),
+              httpRequest().get(`${process.env.URL}category/${name_category}`),
           ]);
           setRes(resp);
-          // setTimeout(() => {
-            setLoading(false)
+          setLoading(false)
             
-          // }, 5009);
         }
   
         fetchData();
         
     }, [name_category, payloadCategory]);
-
-    console.log('El response ', res)
-
 
     // Search function
     const findInSections = () => {

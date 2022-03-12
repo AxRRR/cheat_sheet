@@ -13,7 +13,7 @@ export const AddSection = ({ name_category }) => {
         e.preventDefault();
 
         await Promise.all([
-          httpRequest().post('http://localhost:3000/api/section', { 
+          httpRequest().post(`${process.env.URL}section`, { 
               headers: {
                   'Content-type': 'application/json'
               },

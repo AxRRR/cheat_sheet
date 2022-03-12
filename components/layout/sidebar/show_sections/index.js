@@ -30,7 +30,7 @@ export const ShowSection = ({
                     <div>
                         <button onClick={async() => {
                             await Promise.all([
-                            httpRequest().post(`http://localhost:3000/api/section/delete/${_id}`),
+                            httpRequest().post(`${process.env.URL}section/delete/${_id}`),
                             ])
                         }}>
                             <FontAwesomeIcon icon={faTrashCan} />

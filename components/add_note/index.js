@@ -15,7 +15,7 @@ export const AddNote = ({ showDefaultComponent = true, sectionId }) => {
         e.preventDefault();
 
         await Promise.all([
-            httpRequest().post('http://localhost:3000/api/element/add', { 
+            httpRequest().post(`${process.env.URL}element/add`, { 
                 headers: {
                     'Content-type': 'application/json'
                 },

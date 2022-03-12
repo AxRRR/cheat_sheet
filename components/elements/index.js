@@ -57,7 +57,7 @@ export const Elements = ({ information }) => {
         e.preventDefault();
 
         const [ resp ] = await Promise.all([
-            httpRequest().post('http://localhost:3000/api/element/update', { 
+            httpRequest().post(`${process.env.URL}element/update`, { 
                 headers: {
                     'Content-type': 'application/json'
                 },
@@ -85,7 +85,7 @@ export const Elements = ({ information }) => {
                 <button 
                     onClick={async() => {
                         await Promise.all([
-                            httpRequest().post(`http://localhost:3000/api/element/delete/${currentText._id}`),
+                            httpRequest().post(`${process.env.URL}element/delete/${currentText._id}`),
                         ])
                     }}
                     className='homepage--buttonStyles__delete'>
