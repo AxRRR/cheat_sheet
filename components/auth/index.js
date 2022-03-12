@@ -36,13 +36,14 @@ export const Authentication = () => {
     
     const validateToken = () => {
         if (typeof window !== 'undefined') {
-            const authLocal = JSON.parse(localStorage.getItem("authUser"));
+            let authLocal = JSON.parse(localStorage.getItem("authUser"));
             
             if(authLocal === null){
                 localStorage.setItem("authUser", JSON.stringify({
                     authenticated: false,
                     role: 'admin'
                 }));
+                authLocal = JSON.parse(localStorage.getItem("authUser"));
             }
             return authLocal.authenticated;
         }

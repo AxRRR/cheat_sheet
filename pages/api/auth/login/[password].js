@@ -1,4 +1,3 @@
-import GenerateJWT from "../../../../helpers/json_web_token";
 import dbConnect from "../../../../lib/mongo";
 import auth from '../../../../models/auth';
 import bcrypt from 'bcryptjs';
