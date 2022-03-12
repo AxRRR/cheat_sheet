@@ -1,0 +1,29 @@
+
+
+.authentication{
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    z-index: 10;
+    backdrop-filter: blur(1rem);
+    position: fixed;
+    form{
+        width: 50%;
+        margin: auto;
+        height: 20rem;
+        margin-top: 15%;
+        input{
+            @include InputStyle(){
+                width: 100%;
+                height: 10rem;
+                font-size: 8rem;
+                text-align: center;
+            }
+        }
+        p{
+            font-size: 3rem;
+            text-align: center;
+            font-weight: bold;
+        }
+    }
+}

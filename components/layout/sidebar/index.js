@@ -1,7 +1,10 @@
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState }      from "react";
-import { Fragment } from "react/cjs/react.production.min";
+import { 
+  useEffect, 
+  useState, 
+  Fragment, 
+  useContext 
+}                         from "react";
+import { categoryData } from "../../../context/categoryContext";
 import { httpRequest }              from "../../../helpers/httpRequest";
 import { useForm } from "../../../hooks/useForm";
 import { AddSection }               from "../../add_section";
@@ -17,7 +20,11 @@ export const Sidebar = ({
       loading
     }) => {
 
-    const [res, setRes] = useState();
+    const [res, setRes] = useState({
+      response: null
+    });
+
+    const { payloadCategory } = useContext(categoryData);
 
     const [form, inputChange] = useForm({
       search: ''
@@ -31,15 +38,17 @@ export const Sidebar = ({
               httpRequest().get(`http://localhost:3000/api/category/${name_category}`),
           ]);
           setRes(resp);
-          setTimeout(() => {
+          // setTimeout(() => {
             setLoading(false)
             
-          }, 5009);
+          // }, 5009);
         }
   
         fetchData();
         
-    }, [name_category]);
+    }, [name_category, payloadCategory]);
+
+    console.log('El response ', res)
 
 
     // Search function
@@ -47,6 +56,7 @@ export const Sidebar = ({
       const getSections =
         res.response._sections
           .filter((e) => e.section_title.toLowerCase().indexOf(form.search) != -1)
+          
        
     return <Fragment>
         {
@@ -83,7 +93,7 @@ export const Sidebar = ({
           <ul>
             {form.search !== '' && findInSections() }
               {
-                  res != null && !loading ? 
+                  !!res.response && loading === false ? 
                   res.response._sections
                   .map(({ _id, section_title, _elements }, index) => ( 
                     <Fragment>

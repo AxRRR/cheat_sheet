@@ -7,16 +7,18 @@ const Homepage = () => {
 
   const [res, setRes] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const [ resp ] = await Promise.all([
-                httpRequest().get('http://localhost:3000/api/categories'),
-            ]);
-            setRes(resp);
-          }
-    
-          fetchData();
-    }, []);
+  useEffect(() => {
+      const fetchData = async () => {
+          const [ resp ] = await Promise.all([
+              httpRequest().get('http://localhost:3000/api/categories'),
+          ]);
+          setRes(resp);
+        }
+  
+        fetchData();
+  }, []);
+
+    // console.log('El token ', Authentication().validateToken())
   
   return (
     <div>
@@ -35,13 +37,19 @@ const Homepage = () => {
           <div>
           {
               !!res && res.response.map((category, index) => (
-                  <Link href={`/category/${category.name}`}>
+                  <main>
                     <article key={index}>
-                      <p>
-                        {category.name.replace(/\b\w/g, l => l.toUpperCase())}
-                      </p>
+                        <p>
+                          {category.name.replace(/\b\w/g, l => l.toUpperCase())}
+                        </p>
+                    <div>
+                      <p>Eliminar</p>
+                      <Link href={`/category/${category.name}`}>
+                        <p>Visitar</p>
+                      </Link>
+                    </div>
                     </article>
-                  </Link>
+                  </main>
               ))
           }
           </div>

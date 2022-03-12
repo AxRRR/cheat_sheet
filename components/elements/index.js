@@ -5,7 +5,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
     useEffect, 
-    useState
+    useState,
+    useContext
 }                          from "react";
 import Prism               from "prismjs";
 import { httpRequest }     from "../../helpers/httpRequest";
@@ -75,29 +76,29 @@ export const Elements = ({ information }) => {
         <div>
             {information != null ?
             <section>
-            <p>{form.title}</p>
-            <button 
-                onClick={showFormChange}
-                className='homepage--buttonStyles'>
-                <FontAwesomeIcon icon={faPenToSquare} />
-            </button>
-            <button 
-                onClick={async() => {
-                    await Promise.all([
-                        httpRequest().post(`http://localhost:3000/api/element/delete/${currentText._id}`),
-                    ])
-                }}
-                className='homepage--buttonStyles__delete'>
-                <FontAwesomeIcon icon={faTrashCan} />
-            </button>
-            <pre>
-                <code className='language-javascript'>
-                    {form.code}
-                </code>
-            </pre>
-        <div>
-            <p>Ultima modificacion {currentText.dateChange.date} a las {currentText.dateChange.time}</p>
-        </div>
+                <p>{form.title}</p>
+                <button 
+                    onClick={showFormChange}
+                    className='homepage--buttonStyles'>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
+                <button 
+                    onClick={async() => {
+                        await Promise.all([
+                            httpRequest().post(`http://localhost:3000/api/element/delete/${currentText._id}`),
+                        ])
+                    }}
+                    className='homepage--buttonStyles__delete'>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                </button>
+                <pre>
+                    <code className='language-javascript'>
+                        {form.code}
+                    </code>
+                </pre>
+            <div>
+                <p>Ultima modificacion {currentText.dateChange.date} a las {currentText.dateChange.time}</p>
+            </div>
         </section> 
         : <LoaderComponent/>
         }

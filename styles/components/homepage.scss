@@ -26,46 +26,78 @@
             margin: auto;
             display: flex;
             flex-wrap: wrap;
-            
-            article{
-                height: 10rem;
-                width: 45%;
-                text-align: center;
-                border-radius: .5rem;
-                cursor: pointer;
-                background-color: darken($color: #0e0f1d, $amount: 1);
-                margin-left: 1.7rem;
-                margin-bottom: 1.7rem;
-                transform-origin: 0% 100%;
-                position: relative;
-                z-index: 1;
-                overflow: hidden;
-                display: inline-block;
-                &::after{
-                    content: "";
-                    background: $PRIMARY_COLOR;
-                    position: absolute;
-                    z-index: -1;
-                    display: block;
-                    left: -50%;
-                    right: -50%;
-                    top: -150%;
-                    bottom: -150%;
-                    transform: scale(10, 0);
-                    transition: all 0.4s ease;
-                }
-                &:hover::after{
-                    transition: all 2s ease-out;
-                    transform: scale(1, 1);
-                }
-                p{
-                    font-size: 2rem;
-                    font-weight: bolder;
-                    padding-top: 3.5rem;
+            main{
+                width: 20%;
+                article{
+                    height: auto;
+                    width: 100%;
+                    text-align: center;
+                    border-radius: .5rem;
+                    cursor: pointer;
+                    background-color: darken($color: #0e0f1d, $amount: 1);
+                    // margin-left: 1.7rem;
+                    margin-bottom: 1.7rem;
+                    transform-origin: 0% 100%;
+                    position: relative;
+                    z-index: 1;
+                    overflow: hidden;
+                    display: inline-block;
+                    &::after{
+                        content: "";
+                        background: $PRIMARY_COLOR;
+                        position: absolute;
+                        z-index: -1;
+                        display: block;
+                        left: -50%;
+                        right: -50%;
+                        top: -150%;
+                        bottom: -150%;
+                        transform: scale(10, 0);
+                        transition: all 0.4s ease;
+                    }
+                    &:hover::after{
+                        transition: all 2s ease-out;
+                        transform: scale(1, 1);
+                    }
+                    p{
+                        font-size: 2rem;
+                        font-weight: bolder;
+                        padding-top: 3.5rem;
+                    }
+                    div{
+                        display: flex;
+                        background-color: transparent;
+                        color: rgb(255, 255, 255, 0.0);
+                        width: 100%;
+                        padding: 1rem;
+                        p{
+                            margin-left: 1rem;
+                            font-size: 12px;
+                            color: rgb(255, 255, 255, 0.0);
+                            transition: all 0.4s ease;
+                        }
+                        &:hover{
+                            p{
+                                color: white;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+
+#showDescriptionCategory{
+    display: flex;
+    display: none;
+    width: 100%;
+    padding: 1rem;
+    p{
+        margin-left: 1rem;
+    }
+    // background-color: aqua;
 }
 
 .homepage{

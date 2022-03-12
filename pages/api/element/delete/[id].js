@@ -14,7 +14,12 @@ export default async function handler(req, res){
             } 
         } = req;
 
-        await element.findByIdAndDelete({ _id: id })
+        await element.findByIdAndDelete({ _id: id });
+
+        res.status(200).json({
+            status: true,
+            message: 'Se elimino correctamente'
+        })
 
     } catch (error) {
         console.log('Ocurrio un error ' + error)   

@@ -1,19 +1,19 @@
-import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Fragment } from "react/cjs/react.production.min"
-import { httpRequest } from "../../../../helpers/httpRequest";
+import { faTrashCan }       from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon }  from "@fortawesome/react-fontawesome";
+import { Fragment }         from "react"
+import { httpRequest }      from "../../../../helpers/httpRequest";
 
 
 export const ShowSection = ({ 
-    payload, 
-    setElementData, 
-    setSectionId 
-}) => {
+        payload, 
+        setElementData, 
+        setSectionId
+    }) => {
 
     const { index, _id, _elements, section_title  } = payload;
-
-    const isEmptyData = (_id, setElementData, setSectionId) => {
-        return setSectionId(_id), setElementData(null);
+    
+    const isEmptyData = (_id, setElementData, setSectionId, index) => {
+        setSectionId(_id), setElementData(null);
     }
 
     return (
