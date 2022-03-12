@@ -28,7 +28,7 @@ export const Navigation = () => {
                     </Link>
                     {
                         !!res && res.response.map((category, index) => (
-                            <Link href={`/category/${category.name}`}><li key={index}>
+                            <Link key={index} href={`/category/${category.name}`}><li>
                                 {category.name.replace(/\b\w/g, l => l.toUpperCase())}
                             </li></Link>
                         ))

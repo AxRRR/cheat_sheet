@@ -39,7 +39,7 @@ const Category = () => {
     checkLocalStorage();
     
   }, [])
-  
+
   useEffect(() => {
     setShowFormAddNote(false);
     Prism.highlightAll(); 
@@ -71,8 +71,8 @@ const Category = () => {
                   elementData != null 
                   && !loading && 
                   <Fragment>
-                      {elementData.map(({ _id, title, code, dateChange }) => 
-                      <Elements
+                      {elementData.map(({ _id, title, code, dateChange }, index) => 
+                      <Elements key={index}
                         information={
                           {
                             _id,

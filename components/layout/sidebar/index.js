@@ -58,6 +58,7 @@ export const Sidebar = ({
           getSections.length >= 1 
             && getSections.map(({_id, section_title, _elements}, index) => 
             <ShowSection 
+              key={index}
               payload={
               { 
                   index,
@@ -91,7 +92,7 @@ export const Sidebar = ({
                   !!res.response && loading === false ? 
                   res.response._sections
                   .map(({ _id, section_title, _elements }, index) => ( 
-                    <Fragment>
+                    <Fragment key={index}>
                         {
                           form.search == '' && 
                             <ShowSection 

@@ -12,11 +12,11 @@ export const Footer = () => {
                     <p>Gestor de Proyectos</p>
                 </section>
                 <section>
-                    <a href='https://github.com/AxRRR/cheat_sheet' target='_blank'>
+                    <a href='https://github.com/AxRRR/cheat_sheet' rel='noreferrer' target='_blank'>
                         <p>Repositorio</p>
                     </a>
                     {/* <p>GitHub Fabrizio Luna</p> */}
-                    <a href='http://fabrizioluna.com.mx' target='_blank'>
+                    <a href='http://fabrizioluna.com.mx' rel='noreferrer' target='_blank'>
                         <p>FabrizioLuna.com.mx</p>
                     </a>
                     <p>Derechos reservados Fabrizio Luna 2022</p>

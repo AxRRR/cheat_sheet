@@ -35,8 +35,8 @@ const Homepage = () => {
           <div>
           {
               !!res && res.response.map((category, index) => (
-                  <main>
-                    <article key={index}>
+                  <main key={index}>
+                    <article>
                         <p>
                           {category.name.replace(/\b\w/g, l => l.toUpperCase())}
                         </p>
