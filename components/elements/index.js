@@ -122,6 +122,7 @@ export const Elements = ({ information }) => {
                 </div>
             </form>
         }
+        {/* <hr></hr> */}
         </div>
     )
 }

@@ -4,10 +4,12 @@
     margin-top: 0px;
     width: 40%;
     flex-direction: column;
+    height: 60rem;
     padding: 1rem;
     margin-right: 2rem;
     background-color: darken($color: #0e0f1d, $amount: 1);
     border-radius: 1rem;
+    overflow-y: scroll;
     section{
         form{
             input{

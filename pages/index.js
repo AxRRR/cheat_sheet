@@ -17,8 +17,6 @@ const Homepage = () => {
   
         fetchData();
   }, []);
-
-    // console.log('El token ', Authentication().validateToken())
   
   return (
     <div>

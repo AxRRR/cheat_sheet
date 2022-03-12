@@ -23,7 +23,9 @@ export const Navigation = () => {
             <header>
                 <nav>
                 <ul>
-                    <li>CheatSheet Fabrizio</li>
+                    <Link href='/'>
+                        <li>CheatSheet Fabrizio</li>
+                    </Link>
                     {
                         !!res && res.response.map((category, index) => (
                             <Link href={`/category/${category.name}`}><li key={index}>
